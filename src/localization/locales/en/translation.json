@@ -1,0 +1,78 @@
+{
+  "loginPage": {
+    "title": "Login",
+    "field": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "button": { "submit": "Login" },
+    "error": {
+      "email": {
+        "required": "Email is required",
+        "email": "Email is invalid"
+      },
+      "password": {
+        "required": "Password is required"
+      }
+    }
+  },
+  "signUpPage": {
+    "title": {
+      "client": "Sign up to advance your skin care",
+      "brandEnvoy": "Sign up to manage your brand"
+    },
+    "field": {
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "dateOfBirth": "Date of Birth",
+      "skinTypes": "Skin Types"
+    },
+    "button": { "submit": "Sign Up" },
+    "toat": {
+      "registrationSuccesfull": "Sign up successfully",
+      "registrationFailed": "Sign up failed"
+    },
+    "registrationSuccessful": {
+      "text": {
+        "client": "Go to login page",
+        "brandEnvoy": "Wait till you will be approved by admin, then you can login and manage your brand"
+      }
+    },
+    "error": {
+      "email": {
+        "required": "Email is required",
+        "email": "Email is invalid"
+      },
+      "username": {
+        "required": "Username is required",
+        "minLength": "Username must be at least {{minLength}} characters long",
+        "maxLength": "Username must be at most {{maxLength}} characters long"
+      },
+      "dateOfBirth": {
+        "required": "Date of Birth is required"
+      },
+      "password": {
+        "required": "Password is required",
+        "minlength": "Password must be at least {{minLength}} characters long",
+        "maxLength": "Username must be at most {{maxLength}} characters long",
+        "pattern": "Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 digit"
+      },
+      "confirmPassword": {
+        "required": "Confirm Password is required",
+        "notMatch": "Password and Confirm Password do not match"
+      },
+      "skinTypes": {
+        "required": "Skin Types is required"
+      }
+    }
+  },
+  "landingPage": {
+    "button": {
+      "login": "Login",
+      "signUp": "Sign Up",
+      "brandEnvoy": "Represent a brand?"
+    }
+  }
+}

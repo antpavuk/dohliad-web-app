@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { PaletteOptions, ThemeProvider, createTheme } from '@mui/material';
+
+import useActions from './store/hooks/useActions';
+import Router from './router/Router';
 import './App.css';
+import './localization/i18n';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#4200FF'
+    },
+    cta: {
+      white: '#FFFFFF',
+      black: '#000000'
+    }
+  } as PaletteOptions
+});
 
 function App() {
+  const { refreshToken } = useActions();
+
+  useEffect(() => {
+    refreshToken();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ThemeProvider theme={theme}>
+        <Router />
+      </ThemeProvider>
     </div>
   );
 }

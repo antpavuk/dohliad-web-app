@@ -1,0 +1,6 @@
+export enum CredentialConstraint {
+  MIN_PASSWORD_LENGTH = 8,
+  MAX_PASSWORD_LENGTH = 32,
+  MIN_USERNAME_LENGTH = 6,
+  MAX_USERNAME_LENGTH = 20
+}
