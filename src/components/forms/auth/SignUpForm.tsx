@@ -5,19 +5,19 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 
-import PrimaryButton from '../PrimaryButton';
-import ControlledTextField from '../controlled-elements/ControlledTextField';
-import { SkinType } from '../../types/skin-types.enum';
-import { CredentialConstraint } from '../../types/credential-constraints.enum';
-import { formControlStyle, submitButtonStyle } from './styles/auth-form-control.styles';
-import ControlledCheckboxGroup from '../controlled-elements/ControlledCheckboxGroup';
-import { UserRole } from '../../types/user-roles.enum';
-import useActions from '../../store/hooks/useActions';
-import { RegisterUserCredentials } from '../../types/models/create-user';
-import formatDate from '../../utils/formatDate';
+import PrimaryButton from '../../PrimaryButton';
+import ControlledTextField from '../../controlled-elements/ControlledTextField';
+import { SkinType } from '../../../types/skin-types.enum';
+import { CredentialConstraint } from '../../../types/credential-constraints.enum';
+import { formControlStyle, submitButtonStyle } from '../styles/form-control.styles';
+import ControlledCheckboxGroup from '../../controlled-elements/ControlledCheckboxGroup';
+import useActions from '../../../store/hooks/useActions';
+import { RegisterUserCredentials } from '../../../types/models/create-user';
+import formatDate from '../../../utils/formatDate';
+import CreateUserRole from '../../../types/models/enums/create-user-role';
 
 interface SignUpFormProps {
-  role: UserRole.Client | UserRole.BrandEnvoy;
+  role: CreateUserRole;
 }
 
 interface SignUpFormValues {
@@ -32,7 +32,7 @@ interface SignUpFormValues {
 const SignUpForm: FC<SignUpFormProps> = ({ role }) => {
   const { t } = useTranslation();
 
-  const isClientSignUp = useMemo(() => role === UserRole.Client, [role]);
+  const isClientSignUp = useMemo(() => role === CreateUserRole.Client, [role]);
 
   const { register } = useActions();
 

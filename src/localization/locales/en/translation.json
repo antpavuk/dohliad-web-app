@@ -74,5 +74,52 @@
       "signUp": "Sign Up",
       "brandEnvoy": "Represent a brand?"
     }
+  },
+  "brandPage": {
+    "button": {
+      "visitWebsite": "Visit Website",
+      "createBrand": "Create",
+      "chooseBrand": "Choose"
+    },
+    "warnings": {
+      "notEnvoyOfAnyBrand": {
+        "title": "Not an Envoy of Any Brand",
+        "description": "Please create a brand or choose an existing one to become its envoy."
+      }
+    },
+    "createBrandForm": {
+      "title": "Create Brand",
+      "error": {
+        "name": {
+          "required": "Name is required"
+        },
+        "description": {
+          "required": "Description is required"
+        },
+        "websiteUrl": {
+          "required": "Website URL is required",
+          "url": "Please enter a valid URL"
+        },
+        "countryId": {
+          "required": "Country is required"
+        }
+      },
+      "field": {
+        "name": "Name",
+        "description": "Description",
+        "websiteUrl": "Website URL",
+        "countryId": "Country"
+      },
+      "button": {
+        "submit": "Submit"
+      },
+      "warning": "Warning: Once the brand is created, you will be logged out."
+    }
+  },
+  "brandCard": {
+    "button": {
+      "becomeEnvoy": "Become Envoy",
+      "findOutMore": "Find Out More"
+    }
   }
 }

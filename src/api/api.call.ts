@@ -6,7 +6,7 @@ const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
 const apiCall = axios.create({
   baseURL: BASE_URL,
-  timeout: 1000,
+  timeout: 3000,
   headers: {
     'Content-Type': 'application/json'
   }
@@ -27,7 +27,10 @@ apiCall.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.status === 401 && !originalRequest._retry) {
+    if (
+      (error.response.status === 403 || error.response.status === 401) &&
+      !originalRequest._retry
+    ) {
       originalRequest._retry = true;
       try {
         const accessToken = localStorage.getItem(TokenName.Access);
@@ -37,6 +40,7 @@ apiCall.interceptors.response.use(
           const res = await AuthService.refreshToken({ accessToken, refreshToken });
           if (res.status === 201) {
             localStorage.setItem(TokenName.Access, res.data.accessToken);
+            localStorage.setItem(TokenName.Refresh, res.data.refreshToken);
 
             apiCall.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
               TokenName.Access
@@ -48,7 +52,8 @@ apiCall.interceptors.response.use(
 
         localStorage.removeItem(TokenName.Access);
         localStorage.removeItem(TokenName.Refresh);
-        window.location.href = '/login';
+
+        return Promise.reject(error);
       } catch (error) {
         return Promise.reject(error);
       }

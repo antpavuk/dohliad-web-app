@@ -1,5 +1,4 @@
-import { FC } from 'react';
-import { Controller, Control, ControllerProps, FieldValues, Path } from 'react-hook-form';
+import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 import {
   RadioGroup,
   FormControlLabel,

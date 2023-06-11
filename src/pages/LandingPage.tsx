@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-import HorizontalNavbar from '../components/HorizontalNavbar';
+import Topbar from '../components/navbars/Topbar';
 import PrimaryButton from '../components/PrimaryButton';
 import { AuthRoute } from '../types/routes.enum';
 
@@ -11,7 +11,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <HorizontalNavbar
+      <Topbar
         toolSection={
           <>
             <Typography variant="h6">

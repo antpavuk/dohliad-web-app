@@ -7,20 +7,15 @@ class AuthService {
   private static readonly apiCall = apiCall;
 
   public static async login(body: AuthUserCredentials) {
-    const res = await this.apiCall.post(`${this.baseRoute}/login`, body);
-    return res;
+    return await this.apiCall.post(`${this.baseRoute}/login`, body);
   }
 
   public static async refreshToken(body: TokenData) {
-    const res = await this.apiCall.post(`${this.baseRoute}/refreshToken`, body);
-
-    return res;
+    return await this.apiCall.post(`${this.baseRoute}/refreshToken`, body);
   }
 
   public static async logout() {
-    const res = await this.apiCall.post(`${this.baseRoute}/logout`);
-
-    return res;
+    return await this.apiCall.post(`${this.baseRoute}/logout`);
   }
 }
 

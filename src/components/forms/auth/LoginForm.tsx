@@ -3,11 +3,11 @@ import { FormControl } from '@mui/material';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import PrimaryButton from '../PrimaryButton';
-import ControlledTextField from '../controlled-elements/ControlledTextField';
-import { formControlStyle, submitButtonStyle } from './styles/auth-form-control.styles';
+import PrimaryButton from '../../PrimaryButton';
+import ControlledTextField from '../../controlled-elements/ControlledTextField';
+import { formControlStyle, submitButtonStyle } from '../styles/form-control.styles';
 import { useTranslation } from 'react-i18next';
-import useActions from '../../store/hooks/useActions';
+import useActions from '../../../store/hooks/useActions';
 
 interface LoginFormValues {
   email: string;

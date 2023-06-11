@@ -1,5 +1,4 @@
-import { FC } from 'react';
-import { Controller, Control, ControllerProps, FieldValues, Path } from 'react-hook-form';
+import { Controller, Control, FieldValues, Path } from 'react-hook-form';
 import {
   Select,
   MenuItem,
@@ -17,34 +16,6 @@ interface ControlledSelectProps<T extends FieldValues> extends Omit<SelectProps,
   sx?: SxProps<Theme>;
   options: Array<{ value: string | number; label: string }>;
 }
-
-// const ControlledSelect = <T extends FieldValues>({
-//   name,
-//   label,
-//   control,
-//   sx,
-//   options,
-//   ...props
-// }: ControlledSelectProps<T>) => {
-//   return (
-//     <Controller
-//       name={name}
-//       control={control}
-//       render={({ field }) => (
-//         <>
-//           {label && <InputLabel>{label}</InputLabel>}
-//           <Select {...field} variant="outlined" sx={sx} {...props}>
-//             {options.map((option) => (
-//               <MenuItem key={option.value} value={option.value}>
-//                 {option.label}
-//               </MenuItem>
-//             ))}
-//           </Select>
-//         </>
-//       )}
-//     />
-//   );
-// };
 
 const ControlledSelect = <T extends FieldValues>({
   name,

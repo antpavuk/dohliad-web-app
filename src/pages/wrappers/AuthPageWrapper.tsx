@@ -1,7 +1,9 @@
 import { ReactNode, FC } from 'react';
 import { Box, Container, Divider, Typography } from '@mui/material';
 import LogoImage from '../../components/LogoImage';
-import { FontWeight } from '../../types/fonts.enum';
+import { FontWeight } from '../../types/ui/fonts.enum';
+import { useNavigate } from 'react-router-dom';
+import { AuthRoute } from '../../types/routes.enum';
 
 interface AuthPageWrapperProps {
   title: string;
@@ -9,6 +11,12 @@ interface AuthPageWrapperProps {
 }
 
 const AuthPageWrapper: FC<AuthPageWrapperProps> = ({ title, children }) => {
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate(AuthRoute.LANDING);
+  };
+
   return (
     <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
       <Box
@@ -18,8 +26,11 @@ const AuthPageWrapper: FC<AuthPageWrapperProps> = ({ title, children }) => {
           flexDirection: 'column',
           alignItems: 'center',
           padding: 5
-        }}>
-        <LogoImage />
+        }}
+      >
+        <Box onClick={handleLogoClick} sx={{ cursor: 'pointer' }}>
+          <LogoImage />
+        </Box>
         <Typography variant="h4" sx={{ marginTop: 3, fontWeight: FontWeight.SemiBold }}>
           {title}
         </Typography>
@@ -36,7 +47,8 @@ const AuthPageWrapper: FC<AuthPageWrapperProps> = ({ title, children }) => {
         sx={{
           display: 'flex',
           justifyContent: 'center'
-        }}>
+        }}
+      >
         {children}
       </Box>
     </Container>

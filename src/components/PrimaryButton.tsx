@@ -4,8 +4,8 @@ const PrimaryButton = styled(Button)(({ theme, variant }) => {
   const isContained = variant === 'contained';
 
   const colors = {
-    primary: isContained ? theme.palette.cta.white : theme.palette.cta.black,
-    secondary: isContained ? theme.palette.cta.black : theme.palette.cta.white
+    primary: isContained ? theme.palette?.cta?.white : theme.palette?.cta?.black,
+    secondary: isContained ? theme.palette?.cta?.black : theme.palette?.cta?.white
   };
 
   return {

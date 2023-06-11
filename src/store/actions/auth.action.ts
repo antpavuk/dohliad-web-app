@@ -65,10 +65,11 @@ export const logout = createAsyncThunk('auth/logout', async (_, { rejectWithValu
   try {
     // Make the API request to log out the user
     await AuthService.logout();
+    localStorage.clear();
 
     // Delete tokens from localStorage
-    localStorage.removeItem(TokenName.Access);
-    localStorage.removeItem(TokenName.Refresh);
+    // localStorage.removeItem(TokenName.Access);
+    // localStorage.removeItem(TokenName.Refresh);
 
     // Dispatch an action to update the state indicating logout
     return {};

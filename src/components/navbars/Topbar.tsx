@@ -1,13 +1,15 @@
 import { FC } from 'react';
 import { AppBar, Container, Toolbar, Box } from '@mui/material';
 
-import LogoImage from './LogoImage';
+import LogoImage from '../LogoImage';
 
-interface HorizontalNavbarProps {
+interface TopbarProps {
   toolSection?: React.ReactNode;
 }
 
-const HorizontalNavbar: FC<HorizontalNavbarProps> = ({ toolSection = <></> }) => {
+const Topbar: FC<TopbarProps> = ({ toolSection = <></> }) => {
+  // const theme = useTheme();
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl" sx={{ padding: '16px 0' }}>
@@ -18,8 +20,9 @@ const HorizontalNavbar: FC<HorizontalNavbarProps> = ({ toolSection = <></> }) =>
               flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
               justifyContent: 'flex-end',
-              gap: '16px'
-            }}>
+              gap: (theme) => theme.spacing(2)
+            }}
+          >
             {toolSection}
           </Box>
         </Toolbar>
@@ -28,4 +31,4 @@ const HorizontalNavbar: FC<HorizontalNavbarProps> = ({ toolSection = <></> }) =>
   );
 };
 
-export default HorizontalNavbar;
+export default Topbar;

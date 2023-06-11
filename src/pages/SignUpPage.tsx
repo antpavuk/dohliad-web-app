@@ -1,20 +1,16 @@
-import { FC, useMemo, forwardRef } from 'react';
+import { FC, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Snackbar, Typography } from '@mui/material';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import { Box, Snackbar, Typography } from '@mui/material';
 
 import AuthPageWrapper from './wrappers/AuthPageWrapper';
-import SignUpForm from '../components/forms/SignUpForm';
-import { UserRole } from '../types/user-roles.enum';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useUserState from '../store/hooks/selectors/useUser';
+import useUserState from '../store/hooks/selectors/useUserState';
 import useActions from '../store/hooks/useActions';
 import PrimaryButton from '../components/PrimaryButton';
 import { AuthRoute } from '../types/routes.enum';
-
-const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import CreateUserRole from '../types/models/enums/create-user-role';
+import SignUpForm from '../components/forms/auth/SignUpForm';
+import Alert from '../components/Alert';
 
 const SignUpPage: FC = () => {
   const { t } = useTranslation();
@@ -26,9 +22,9 @@ const SignUpPage: FC = () => {
   const role = useMemo(() => {
     const path = location.pathname;
     if (path.includes('/brand')) {
-      return UserRole.BrandEnvoy;
+      return CreateUserRole.BrandEnvoy;
     } else {
-      return UserRole.Client;
+      return CreateUserRole.Client;
     }
   }, [location.pathname]);
 
@@ -47,10 +43,12 @@ const SignUpPage: FC = () => {
   return (
     <AuthPageWrapper
       title={
-        role === UserRole.Client ? t('signUpPage.title.client') : t('signUpPage.title.brandEnvoy')
+        role === CreateUserRole.Client
+          ? t('signUpPage.title.client')
+          : t('signUpPage.title.brandEnvoy')
       }>
       {registrationSuccesfull ? (
-        role === UserRole.Client ? (
+        role === CreateUserRole.Client ? (
           <PrimaryButton
             onClick={() => {
               navigate(AuthRoute.LOGIN);
@@ -65,7 +63,25 @@ const SignUpPage: FC = () => {
           </Typography>
         )
       ) : (
-        <SignUpForm role={role} />
+        <Box>
+          <SignUpForm role={role} />
+          <Box sx={{ mt: 3 }}>
+            <Typography color="textSecondary" variant="body1">
+              {t('signUpPage.haveAccount')}{' '}
+              <span
+                style={{
+                  textDecoration: 'underline',
+                  cursor: 'pointer',
+                  fontWeight: 'lighter',
+                  fontStyle: 'italic',
+                  fontSize: '0.8rem'
+                }}
+                onClick={() => navigate(AuthRoute.LOGIN)}>
+                {t('signUpPage.login')}
+              </span>
+            </Typography>
+          </Box>
+        </Box>
       )}
       <Snackbar
         open={registrationSuccesfull !== undefined}

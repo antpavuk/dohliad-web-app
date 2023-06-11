@@ -1,5 +1,5 @@
 import { SkinType } from '../skin-types.enum';
-import { UserRole } from '../user-roles.enum';
+import CreateUserRole from './enums/create-user-role';
 
 export interface RegisterClientUserCredentials {
   email: string;
@@ -7,7 +7,7 @@ export interface RegisterClientUserCredentials {
   username: string;
   skinTypes: SkinType[];
   dateOfBirth: Date;
-  role: UserRole.Client;
+  role: CreateUserRole.Client;
 }
 
 export interface RegisterBrandEnvoyUserCredentials {
@@ -15,7 +15,7 @@ export interface RegisterBrandEnvoyUserCredentials {
   password: string;
   username: string;
   brandId?: string;
-  role: UserRole.BrandEnvoy;
+  role: CreateUserRole.BrandEnvoy;
 }
 
 export type RegisterUserCredentials =
