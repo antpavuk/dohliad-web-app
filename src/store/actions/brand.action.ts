@@ -60,9 +60,9 @@ export const deleteBrand = createAsyncThunk(
   'brand/deleteBrand',
   async (id: string, { rejectWithValue }) => {
     try {
-      const response = await BrandService.deleteBrand(id);
+      await BrandService.deleteBrand(id);
 
-      return response.data;
+      return true;
     } catch (error) {
       return rejectWithValue(error);
     }

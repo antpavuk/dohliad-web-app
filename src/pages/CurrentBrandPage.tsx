@@ -79,9 +79,9 @@ const CurrentBrandPage: FC = () => {
 
   const { isUserStateLoading, currentUser, currentUserIsBrandEnvoy, currentUserHasBrand } =
     useUserState();
-  const { isBrandStateLoading, isBrandUpdated, isBrandDeleted } = useBrandState();
+  const { isBrandStateLoading, isBrandUpdated } = useBrandState();
 
-  const { getBrands, getCurrentUser, logout } = useActions();
+  const { getBrands, getCurrentUser } = useActions();
 
   const [isCreateBrandModalOpen, setIsCreateBrandModalOpen] = useState(false);
   const [isEditBrandModalOpen, setIsEditBrandModalOpen] = useState(false);
@@ -130,13 +130,6 @@ const CurrentBrandPage: FC = () => {
       setIsEditBrandModalOpen(false);
     }
   }, [isBrandUpdated]);
-
-  useEffect(() => {
-    if (isBrandDeleted) {
-      logout();
-    }
-    if (isBrandDeleted) navigate(AuthRoute.LOGIN);
-  }, [isBrandDeleted]);
 
   if (isBrandStateLoading || isUserStateLoading) return <div>LOADING...</div>;
 

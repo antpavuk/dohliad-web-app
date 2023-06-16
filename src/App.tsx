@@ -34,16 +34,16 @@ export const theme = createTheme({
 function App() {
   const { refreshToken, logout } = useActions();
   const { brandAssigned } = useUserState();
-  const { isBrandCreated } = useBrandState();
+  const { isBrandCreated, isBrandDeleted } = useBrandState();
 
   // explicitly logout user after brand creation
   // due to the token invalidation on the backend
   useEffect(() => {
-    if (brandAssigned || isBrandCreated) {
+    if (brandAssigned || isBrandCreated || isBrandDeleted) {
       localStorage.clear();
       logout();
     }
-  }, [brandAssigned, isBrandCreated]);
+  }, [brandAssigned, isBrandCreated, isBrandDeleted]);
 
   useEffect(() => {
     refreshToken();
