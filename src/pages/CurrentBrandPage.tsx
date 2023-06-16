@@ -5,14 +5,16 @@ import BasicPageWrapper from './wrappers/BasicPageWrapper';
 import PrimaryButton from '../components/PrimaryButton';
 import useUserState from '../store/hooks/selectors/useUserState';
 import useBrandState from '../store/hooks/selectors/useBrandState';
-import CreateBrandForm from '../components/forms/CreateBrandForm';
+import CreateBrandForm from '../components/forms/brand/CreateBrandForm';
 import UserBrandEnvoy from '../types/entities/identity/user-brand-envoy.entity';
 import PrimaryModal from '../components/modal/PrimaryModal';
 import useActions from '../store/hooks/useActions';
 import { useTranslation } from 'react-i18next';
-import { BrandRoute } from '../types/routes.enum';
+import { AuthRoute, BrandRoute } from '../types/routes.enum';
 import { useNavigate } from 'react-router-dom';
 import BrandHeader from '../components/headers/BrandHeader';
+import EditBrandForm from '../components/forms/brand/EditBrandForm';
+import DeleteBrandForm from '../components/forms/brand/DeleteBrandForm';
 
 interface NotEnvoyOfAnyBrandProps {
   onCreateBrand: () => void;
@@ -77,10 +79,13 @@ const CurrentBrandPage: FC = () => {
 
   const { isUserStateLoading, currentUser, currentUserIsBrandEnvoy, currentUserHasBrand } =
     useUserState();
-  const { isBrandStateLoading } = useBrandState();
+  const { isBrandStateLoading, isBrandUpdated, isBrandDeleted } = useBrandState();
 
-  const { getBrands } = useActions();
+  const { getBrands, getCurrentUser, logout } = useActions();
+
   const [isCreateBrandModalOpen, setIsCreateBrandModalOpen] = useState(false);
+  const [isEditBrandModalOpen, setIsEditBrandModalOpen] = useState(false);
+  const [isDeleteBrandModalOpen, setIsDeleteBrandModalOpen] = useState(false);
 
   useEffect(() => {
     getBrands({});
@@ -95,9 +100,43 @@ const CurrentBrandPage: FC = () => {
     setIsCreateBrandModalOpen(true);
   };
 
+  const handleEditBrand = () => {
+    setIsEditBrandModalOpen(true);
+  };
+
+  const handleDeleteBrand = () => {
+    setIsDeleteBrandModalOpen(true);
+  };
+
+  const handleCreateBrandCancel = () => {
+    setIsCreateBrandModalOpen(false);
+  };
+
+  const handleEditBrandCancel = () => {
+    setIsEditBrandModalOpen(false);
+  };
+
+  const handleDeleteBrandCancel = () => {
+    setIsDeleteBrandModalOpen(false);
+  };
+
   const handleChooseBrand = () => {
     navigate(BrandRoute.BRANDS);
   };
+
+  useEffect(() => {
+    if (isBrandUpdated) {
+      getCurrentUser();
+      setIsEditBrandModalOpen(false);
+    }
+  }, [isBrandUpdated]);
+
+  useEffect(() => {
+    if (isBrandDeleted) {
+      logout();
+    }
+    if (isBrandDeleted) navigate(AuthRoute.LOGIN);
+  }, [isBrandDeleted]);
 
   if (isBrandStateLoading || isUserStateLoading) return <div>LOADING...</div>;
 
@@ -110,9 +149,7 @@ const CurrentBrandPage: FC = () => {
         <PrimaryModal
           title={t('brandPage.createBrandForm.title') as string}
           open={isCreateBrandModalOpen}
-          onClose={() => {
-            setIsCreateBrandModalOpen(false);
-          }}>
+          onClose={handleCreateBrandCancel}>
           <CreateBrandForm />
         </PrimaryModal>
       </BasicPageWrapper>
@@ -123,7 +160,27 @@ const CurrentBrandPage: FC = () => {
 
   return (
     <BasicPageWrapper>
-      <BrandHeader brand={brand} onVisitWebsite={handleVisitWebsite} />
+      <BrandHeader
+        brand={brand}
+        onVisitWebsite={handleVisitWebsite}
+        isCurrentUserBrandEnvoy={currentUserIsBrandEnvoy}
+        onEditBrand={currentUserIsBrandEnvoy && currentUserHasBrand ? handleEditBrand : undefined}
+        onDeleteBrand={
+          currentUserIsBrandEnvoy && currentUserHasBrand ? handleDeleteBrand : undefined
+        }
+      />
+      <PrimaryModal
+        title={t('brandPage.editBrandForm.title') as string}
+        open={isEditBrandModalOpen}
+        onClose={handleEditBrandCancel}>
+        <EditBrandForm brand={brand} />
+      </PrimaryModal>
+      <PrimaryModal
+        title={t('brandPage.deleteBrandForm.title') as string}
+        open={isDeleteBrandModalOpen}
+        onClose={handleDeleteBrandCancel}>
+        <DeleteBrandForm brand={brand} />
+      </PrimaryModal>
     </BasicPageWrapper>
   );
 };

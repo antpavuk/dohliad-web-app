@@ -1,4 +1,7 @@
 import { Box, Container, Divider, Typography } from '@mui/material';
+import LaunchIcon from '@mui/icons-material/Launch';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import EditIcon from '@mui/icons-material/Edit';
 import { FC } from 'react';
 import Flag from 'react-flagkit';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +13,18 @@ import Brand from '../../types/entities/brand.entity';
 interface BrandHeaderProps {
   brand: Brand;
   onVisitWebsite: () => void;
+  isCurrentUserBrandEnvoy?: boolean;
+  onEditBrand?: () => void;
+  onDeleteBrand?: () => void;
 }
 
-const BrandHeader: FC<BrandHeaderProps> = ({ brand, onVisitWebsite }) => {
+const BrandHeader: FC<BrandHeaderProps> = ({
+  brand,
+  onVisitWebsite,
+  isCurrentUserBrandEnvoy,
+  onEditBrand,
+  onDeleteBrand
+}) => {
   const { t } = useTranslation();
 
   return (
@@ -45,8 +57,35 @@ const BrandHeader: FC<BrandHeaderProps> = ({ brand, onVisitWebsite }) => {
 
         <Box>
           <PrimaryButton variant="outlined" color="primary" onClick={onVisitWebsite}>
+            <LaunchIcon />
             {t('brandPage.button.visitWebsite')}
           </PrimaryButton>
+          {isCurrentUserBrandEnvoy && (
+            <>
+              <PrimaryButton
+                variant="contained"
+                color="primary"
+                sx={{ ml: '1rem' }}
+                onClick={
+                  onEditBrand ? onEditBrand : () => console.log('Edit brand not implemented')
+                }>
+                <EditIcon />
+
+                {t('brandPage.button.editBrand')}
+              </PrimaryButton>
+              <PrimaryButton
+                variant="contained"
+                color="primary"
+                sx={{ ml: '1rem' }}
+                onClick={
+                  onDeleteBrand ? onDeleteBrand : () => console.log('Delete brand not implemented')
+                }>
+                <DeleteRoundedIcon />
+
+                {t('brandPage.button.deleteBrand')}
+              </PrimaryButton>
+            </>
+          )}
         </Box>
       </Box>
       <Divider sx={{ mt: '2rem', mb: '2rem', color: (theme) => theme.palette.primary.main }} />

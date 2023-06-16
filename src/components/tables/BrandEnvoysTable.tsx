@@ -78,7 +78,8 @@ const BrandEnvoysTable: React.FC<BrandEnvoysTableProps> = ({ filter = 'all' }) =
                         size="small"
                         onClick={() => {
                           authorizeEnvoy(row.id);
-                        }}>
+                        }}
+                      >
                         Authorize
                       </PrimaryButton>
                     )}

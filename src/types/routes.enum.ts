@@ -2,10 +2,19 @@ export enum AuthRoute {
   LANDING = '/',
   LOGIN = '/login',
   SIGN_UP = '/sign-up',
-  SIGN_UP_BRAND = '/sign-up/brand',
-  FORGOT_PASSWORD = '/forgot-password',
-  RESET_PASSWORD = '/reset-password',
-  VERIFY_EMAIL = '/verify-email'
+  SIGN_UP_BRAND = '/sign-up/brand'
+}
+
+export enum ClientRoute {
+  HOME = '/client/',
+  BRANDS = '/client/brands',
+  BRAND = '/client/brand/:id',
+  PRODUCTS = '/client/products',
+  PRODUCT = '/client/product/:id',
+  QUIZ = '/client/quiz',
+  QUIZ_RESULT = '/client/quiz/result',
+  SKINCARE_ROUTINE = '/client/skincare-routine',
+  SKINCARE_ROUTINE_WISH_LIST = '/client/skincare-routine/wish-list'
 }
 
 export enum AdminRoute {
@@ -28,17 +37,3 @@ export enum BrandRoute {
   PRODUCT_CREATE = '/brand/product/create',
   PRODUCT_EDIT = '/brand/product/edit/:id'
 }
-// export enum AppRoute {
-//   HOME = '/home',
-//   PROFILE = '/profile',
-//   BRANDS = '/brands',
-//   BRAND = '/brand/:id',
-//   BRAND_CREATE = '/brand/create',
-//   BRAND_EDIT = '/brand/edit/:id',
-//   BRAND_PRODUCTS = '/brand/:id/products',
-
-//   PRODUCTS = '/products',
-//   PRODUCT = '/product/:id',
-//   PRODUCT_CREATE = '/product/create',
-//   PRODUCT_EDIT = '/product/edit/:id'
-// }

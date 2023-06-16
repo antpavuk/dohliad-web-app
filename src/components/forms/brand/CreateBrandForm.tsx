@@ -5,12 +5,12 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useTranslation } from 'react-i18next';
 
-import ControlledTextField from '../controlled-elements/ControlledTextField';
-import ControlledSelect from '../controlled-elements/ControlledSelect';
-import useActions from '../../store/hooks/useActions';
-import useCountryState from '../../store/hooks/selectors/useCountryState';
-import PrimaryButton from '../PrimaryButton';
-import { formControlStyle } from './styles/form-control.styles';
+import ControlledTextField from '../../controlled-elements/ControlledTextField';
+import ControlledSelect from '../../controlled-elements/ControlledSelect';
+import useActions from '../../../store/hooks/useActions';
+import useCountryState from '../../../store/hooks/selectors/useCountryState';
+import PrimaryButton from '../../PrimaryButton';
+import { formControlStyle } from '../styles/form-control.styles';
 
 interface CreateBrandFormValues {
   name: string;

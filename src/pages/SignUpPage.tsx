@@ -46,7 +46,8 @@ const SignUpPage: FC = () => {
         role === CreateUserRole.Client
           ? t('signUpPage.title.client')
           : t('signUpPage.title.brandEnvoy')
-      }>
+      }
+    >
       {registrationSuccesfull ? (
         role === CreateUserRole.Client ? (
           <PrimaryButton
@@ -54,7 +55,8 @@ const SignUpPage: FC = () => {
               navigate(AuthRoute.LOGIN);
             }}
             color="primary"
-            sx={{ marginTop: '20px' }}>
+            sx={{ marginTop: '20px' }}
+          >
             {t('signUpPage.registrationSuccessful.text.client')}
           </PrimaryButton>
         ) : (
@@ -76,7 +78,8 @@ const SignUpPage: FC = () => {
                   fontStyle: 'italic',
                   fontSize: '0.8rem'
                 }}
-                onClick={() => navigate(AuthRoute.LOGIN)}>
+                onClick={() => navigate(AuthRoute.LOGIN)}
+              >
                 {t('signUpPage.login')}
               </span>
             </Typography>
@@ -86,11 +89,13 @@ const SignUpPage: FC = () => {
       <Snackbar
         open={registrationSuccesfull !== undefined}
         autoHideDuration={10000}
-        onClose={handleClose}>
+        onClose={handleClose}
+      >
         <Alert
           onClose={handleClose}
           severity={registrationSuccesfull ? 'success' : 'error'}
-          sx={{ width: '100%' }}>
+          sx={{ width: '100%' }}
+        >
           {postRegistrationMessage}
         </Alert>
       </Snackbar>

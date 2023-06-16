@@ -2,8 +2,8 @@ import { FC, Suspense, useEffect, useState } from 'react';
 import BasicPageWrapper from './wrappers/BasicPageWrapper';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
-import Select from '@mui/material/Select/Select';
-import MenuItem from '@mui/material/MenuItem/MenuItem';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import { SelectChangeEvent } from '@mui/material';
 
 import useBrandState from '../store/hooks/selectors/useBrandState';

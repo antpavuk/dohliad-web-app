@@ -1,16 +1,15 @@
 import React, { FC, useState } from 'react';
 import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import PrimaryModal from './modal/PrimaryModal';
 
-interface ReadMoreProps {
+interface ReadMoreTextProps {
   text: string;
   maxLength: number;
   openModalOnFullText?: boolean;
 }
 
-const ReadMore: FC<ReadMoreProps> = ({ text, maxLength = 100, openModalOnFullText }) => {
+const ReadMoreText: FC<ReadMoreTextProps> = ({ text, maxLength = 100, openModalOnFullText }) => {
   const [isTruncated, setIsTruncated] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -43,8 +42,7 @@ const ReadMore: FC<ReadMoreProps> = ({ text, maxLength = 100, openModalOnFullTex
               fontStyle: 'italic',
               fontSize: '0.8rem'
             }}
-            onClick={openModalOnFullText ? handleModalOpen : toggleTruncate}
-          >
+            onClick={openModalOnFullText ? handleModalOpen : toggleTruncate}>
             {isTruncated ? 'Read More' : 'Read Less'}
           </span>
         )}
@@ -58,4 +56,4 @@ const ReadMore: FC<ReadMoreProps> = ({ text, maxLength = 100, openModalOnFullTex
   );
 };
 
-export default ReadMore;
+export default ReadMoreText;

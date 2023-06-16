@@ -24,6 +24,10 @@ class BrandService {
   public static async updateBrand({ id, ...body }: UpdateBrand) {
     return await BrandService.apiCall.put(`${BrandService.baseRoute}/${id}`, body);
   }
+
+  public static async deleteBrand(id: string) {
+    return await BrandService.apiCall.delete(`${BrandService.baseRoute}/${id}`);
+  }
 }
 
 export default BrandService;

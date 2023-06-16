@@ -55,3 +55,16 @@ export const updateBrand = createAsyncThunk(
     }
   }
 );
+
+export const deleteBrand = createAsyncThunk(
+  'brand/deleteBrand',
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const response = await BrandService.deleteBrand(id);
+
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

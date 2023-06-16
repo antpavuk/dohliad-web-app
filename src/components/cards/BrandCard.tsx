@@ -1,3 +1,4 @@
+import React, { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardActions, Typography, Box } from '@mui/material';
 import Flag from 'react-flagkit';
@@ -9,7 +10,11 @@ import flagCodes, { FlagCodes } from '../../utils/constants/flags.constants';
 import { BrandRoute } from '../../types/routes.enum';
 import useActions from '../../store/hooks/useActions';
 
-const BrandCard = ({ brand }: { brand: Brand }) => {
+interface BrandCardProps {
+  brand: Brand;
+}
+
+const BrandCard: FC<BrandCardProps> = ({ brand }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { assignBrandToCurrentEnvoy } = useActions();

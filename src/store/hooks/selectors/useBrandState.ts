@@ -10,7 +10,18 @@ const useBrandState = () => {
 
   const isBrandCreated = useTypedSelector((state: RootState) => state.brand.isCreated);
 
-  return { brands, isBrandCreated, isBrandStateLoading, newFetchedBrand };
+  const isBrandUpdated = useTypedSelector((state: RootState) => state.brand.isUpdated);
+
+  const isBrandDeleted = useTypedSelector((state: RootState) => state.brand.isDeleted);
+
+  return {
+    brands,
+    isBrandCreated,
+    isBrandUpdated,
+    isBrandDeleted,
+    isBrandStateLoading,
+    newFetchedBrand
+  };
 };
 
 export default useBrandState;

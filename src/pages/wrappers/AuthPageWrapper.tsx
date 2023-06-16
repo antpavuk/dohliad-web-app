@@ -26,8 +26,7 @@ const AuthPageWrapper: FC<AuthPageWrapperProps> = ({ title, children }) => {
           flexDirection: 'column',
           alignItems: 'center',
           padding: 5
-        }}
-      >
+        }}>
         <Box onClick={handleLogoClick} sx={{ cursor: 'pointer' }}>
           <LogoImage />
         </Box>
@@ -47,8 +46,7 @@ const AuthPageWrapper: FC<AuthPageWrapperProps> = ({ title, children }) => {
         sx={{
           display: 'flex',
           justifyContent: 'center'
-        }}
-      >
+        }}>
         {children}
       </Box>
     </Container>

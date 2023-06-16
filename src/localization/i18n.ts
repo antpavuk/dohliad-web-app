@@ -25,7 +25,7 @@ i18n.use(initReactI18next).init(
     compatibilityJSON: 'v3'
   },
   (err, t) => {
-    console.log(err, t);
+    if (err) console.log(err, t);
   }
 );
 export default i18n;

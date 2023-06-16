@@ -9,7 +9,7 @@ import './localization/i18n';
 import useUserState from './store/hooks/selectors/useUserState';
 import useBrandState from './store/hooks/selectors/useBrandState';
 
-const theme = createTheme({
+export const theme = createTheme({
   palette: {
     primary: {
       main: '#4200FF'
