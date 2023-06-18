@@ -5,12 +5,14 @@ import authReducer from './reducers/authReducer';
 import userReducer from './reducers/userReducer';
 import brandReducer from './reducers/brandReducer';
 import countryReducer from './reducers/countryReducer';
+import ingredientReducer from './reducers/ingredientReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   brand: brandReducer,
-  country: countryReducer
+  country: countryReducer,
+  ingredient: ingredientReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

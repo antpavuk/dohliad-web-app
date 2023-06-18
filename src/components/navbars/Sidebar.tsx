@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   AppBar,
   Toolbar,
@@ -12,11 +13,13 @@ import {
   ListItemText,
   ListItemButton
 } from '@mui/material';
-import { HomeOutlined } from '@mui/icons-material';
+import HomeOutlined from '@mui/icons-material/HomeOutlined';
+import ScienceIcon from '@mui/icons-material/Science';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import LogoImage from '../LogoImage';
 import useActions from '../../store/hooks/useActions';
+import { IngredientRoute } from '../../types/routes.enum';
 
 interface SidebarProps {
   toolSection?: React.ReactNode;
@@ -25,6 +28,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ toolSection = <></> }) => {
   // const theme = useTheme();
   const { logout } = useActions();
+  const navigate = useNavigate();
 
   return (
     <AppBar
@@ -34,29 +38,25 @@ const Sidebar: React.FC<SidebarProps> = ({ toolSection = <></> }) => {
         height: '100%',
         left: 0,
         right: 'auto'
-      }}
-    >
+      }}>
       <Toolbar
         sx={{
           display: 'flex',
           justifyContent: 'flex-start',
           flexDirection: 'column',
           height: '100%'
-        }}
-      >
+        }}>
         <Box
           sx={{
             marginTop: (theme) => theme.spacing(2)
-          }}
-        >
+          }}>
           <LogoImage />
         </Box>
         <Divider />
         <Box
           sx={{
             gap: (theme) => theme.spacing(2)
-          }}
-        >
+          }}>
           <Container>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <nav>
@@ -67,8 +67,7 @@ const Sidebar: React.FC<SidebarProps> = ({ toolSection = <></> }) => {
                     <ListItemButton
                       sx={{
                         borderRadius: '0.5rem'
-                      }}
-                    >
+                      }}>
                       <ListItemIcon>
                         <HomeOutlined
                           sx={{ fontSize: 30, color: (theme) => theme.palette.secondary.main }}
@@ -78,6 +77,18 @@ const Sidebar: React.FC<SidebarProps> = ({ toolSection = <></> }) => {
                         primary="Home"
                         sx={{ color: (theme) => theme.palette.secondary.main }}
                       />
+                    </ListItemButton>
+                  </ListItem>
+                  <ListItem disablePadding>
+                    <ListItemButton
+                      sx={{ borderRadius: '0.5rem' }}
+                      onClick={() => {
+                        navigate(IngredientRoute.INGREDIENTS);
+                      }}>
+                      <ListItemIcon>
+                        <ScienceIcon sx={{ fontSize: 30, color: 'white' }} />
+                      </ListItemIcon>
+                      <ListItemText primary="Ingredients" />
                     </ListItemButton>
                   </ListItem>
                 </List>

@@ -5,6 +5,7 @@ interface BaseParams {
   orderBy?: string;
   filterField?: string;
   filterValue?: string | number | boolean;
+  isSearch?: boolean;
 }
 
 export default BaseParams;

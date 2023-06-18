@@ -157,5 +157,32 @@
       "becomeEnvoy": "Become Envoy",
       "findOutMore": "Find Out More"
     }
+  },
+  "ingredientsPage": {
+    "title": "Ingredients for products",
+    "description": "Here you can find all the ingredients that are used in the products in the system. \n You can also add new ingredients to the list.",
+    "searchPlaceholder": "Search by name",
+    "buttons": {
+      "addIngredient": "Add Ingredient"
+    },
+    "createIngredientForm": {
+      "error": {
+        "name": {
+          "required": "The name is required."
+        }
+      },
+      "field": {
+        "name": "Name",
+        "skinCareFeatures": "Skin Care Features"
+      },
+      "button": {
+        "submit": "Submit"
+      }
+    },
+    "modals": {
+      "addIngredient": {
+        "title": "Add Ingredient"
+      }
+    }
   }
 }
