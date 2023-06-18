@@ -19,18 +19,18 @@ interface CreateBrandFormValues {
   countryId: string;
 }
 
+const initialValues: CreateBrandFormValues = {
+  name: '',
+  description: '',
+  websiteUrl: '',
+  countryId: ''
+};
+
 const CreateBrandForm: FC = () => {
   const { t } = useTranslation();
 
   const { getCountries, createBrand } = useActions();
   const { countries } = useCountryState();
-
-  const initialValues: CreateBrandFormValues = {
-    name: '',
-    description: '',
-    websiteUrl: '',
-    countryId: ''
-  };
 
   const validationSchema = useMemo(
     () =>

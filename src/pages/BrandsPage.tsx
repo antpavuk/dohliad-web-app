@@ -5,12 +5,12 @@ import Box from '@mui/material/Box';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import { SelectChangeEvent } from '@mui/material';
+import Flag from 'react-flagkit';
 
 import useBrandState from '../store/hooks/selectors/useBrandState';
 import useActions from '../store/hooks/useActions';
 import BrandCard from '../components/cards/BrandCard';
 import useCountryState from '../store/hooks/selectors/useCountryState';
-import Flag from 'react-flagkit';
 import flagCodes, { FlagCodes } from '../utils/constants/flags.constants';
 
 const BrandsPage: FC = () => {
@@ -61,7 +61,8 @@ const BrandsPage: FC = () => {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem'
-                  }}>
+                  }}
+                >
                   <Flag country={flagCodes[country.name as keyof FlagCodes]} />
                   {country.name}
                 </MenuItem>
@@ -75,7 +76,8 @@ const BrandsPage: FC = () => {
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
               gap: '1rem'
-            }}>
+            }}
+          >
             {brands.map((brand) => (
               <BrandCard key={brand.id} brand={brand} />
             ))}
