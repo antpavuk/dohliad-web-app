@@ -42,7 +42,8 @@ const ReadMoreText: FC<ReadMoreTextProps> = ({ text, maxLength = 100, openModalO
               fontStyle: 'italic',
               fontSize: '0.8rem'
             }}
-            onClick={openModalOnFullText ? handleModalOpen : toggleTruncate}>
+            onClick={openModalOnFullText ? handleModalOpen : toggleTruncate}
+          >
             {isTruncated ? 'Read More' : 'Read Less'}
           </span>
         )}

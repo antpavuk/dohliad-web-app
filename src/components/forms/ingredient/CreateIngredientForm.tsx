@@ -13,17 +13,17 @@ import { formControlStyle } from '../styles/form-control.styles';
 import { SkinCareFeature } from '../../../types/skin-care-features.enum';
 import ControlledCheckboxGroup from '../../controlled-elements/ControlledCheckboxGroup';
 
+interface CreateIngredientFormValues {
+  name: string;
+  skinCareFeatures: string[] | SkinCareFeature[];
+}
+
 const skinCareFeatures = Object.keys(SkinCareFeature)
   .filter((key) => !isNaN(Number(key))) // Filter out non-numeric keys
   .map((key) => ({
     label: SkinCareFeature[Number(key)],
     value: Number(key)
   }));
-
-interface CreateIngredientFormValues {
-  name: string;
-  skinCareFeatures: string[] | SkinCareFeature[];
-}
 
 const CreateIngredientForm: FC = () => {
   const { t } = useTranslation();

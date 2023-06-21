@@ -5,6 +5,9 @@ import * as UserActions from '../actions/user.action';
 import * as BrandActions from '../actions/brand.action';
 import * as CountryActions from '../actions/country.action';
 import * as IngredientActions from '../actions/ingredient.action';
+import * as ProductActions from '../actions/product.action';
+import * as QuestionActions from '../actions/question.action';
+import * as RoutineActions from '../actions/routine.action';
 
 const useActions = () => {
   const dispatch = useDispatch();
@@ -15,7 +18,10 @@ const useActions = () => {
       ...UserActions,
       ...BrandActions,
       ...CountryActions,
-      ...IngredientActions
+      ...IngredientActions,
+      ...ProductActions,
+      ...QuestionActions,
+      ...RoutineActions
     },
     dispatch
   );

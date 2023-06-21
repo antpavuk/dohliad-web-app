@@ -42,3 +42,9 @@ export enum IngredientRoute {
   INGREDIENTS = '/ingredients',
   INGREDIENT = '/ingredient/:id'
 }
+
+export enum ProductRoute {
+  PRODUCT = '/product/:id',
+  PRODUCTS = '/products',
+  CREATE_PRODUCT = '/product/create'
+}

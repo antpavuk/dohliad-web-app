@@ -135,7 +135,8 @@ const EditBrandForm: FC<EditBrandFormProps> = ({ brand }) => {
           label={t('brandPage.editBrandForm.field.countryName') as string}
           error={!!errors.countryName}
           // helperText={errors.countryName?.message}
-          options={countryOptions}>
+          options={countryOptions}
+        >
           {countryOptions.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}

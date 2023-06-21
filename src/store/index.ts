@@ -6,13 +6,19 @@ import userReducer from './reducers/userReducer';
 import brandReducer from './reducers/brandReducer';
 import countryReducer from './reducers/countryReducer';
 import ingredientReducer from './reducers/ingredientReducer';
+import productReducer from './reducers/productReducer';
+import questionReducer from './reducers/questionReducer';
+import routineReducer from './reducers/routineReducer';
 
 const rootReducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   brand: brandReducer,
   country: countryReducer,
-  ingredient: ingredientReducer
+  ingredient: ingredientReducer,
+  product: productReducer,
+  question: questionReducer,
+  routine: routineReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

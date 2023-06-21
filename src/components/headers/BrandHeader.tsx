@@ -1,8 +1,8 @@
+import { FC } from 'react';
 import { Box, Container, Divider, Typography } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import EditIcon from '@mui/icons-material/Edit';
-import { FC } from 'react';
 import Flag from 'react-flagkit';
 import { useTranslation } from 'react-i18next';
 import PrimaryButton from '../PrimaryButton';
@@ -39,7 +39,6 @@ const BrandHeader: FC<BrandHeaderProps> = ({
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          // alignItems: 'center',
           justifyContent: 'flex-start',
           gap: '1rem',
           mt: '1rem'
@@ -56,8 +55,11 @@ const BrandHeader: FC<BrandHeaderProps> = ({
         </Box>
 
         <Box>
-          <PrimaryButton variant="outlined" color="primary" onClick={onVisitWebsite}>
-            <LaunchIcon />
+          <PrimaryButton
+            variant="outlined"
+            color="primary"
+            onClick={onVisitWebsite}
+            startIcon={<LaunchIcon />}>
             {t('brandPage.button.visitWebsite')}
           </PrimaryButton>
           {isCurrentUserBrandEnvoy && (
@@ -68,9 +70,8 @@ const BrandHeader: FC<BrandHeaderProps> = ({
                 sx={{ ml: '1rem' }}
                 onClick={
                   onEditBrand ? onEditBrand : () => console.log('Edit brand not implemented')
-                }>
-                <EditIcon />
-
+                }
+                startIcon={<EditIcon />}>
                 {t('brandPage.button.editBrand')}
               </PrimaryButton>
               <PrimaryButton
@@ -79,9 +80,8 @@ const BrandHeader: FC<BrandHeaderProps> = ({
                 sx={{ ml: '1rem' }}
                 onClick={
                   onDeleteBrand ? onDeleteBrand : () => console.log('Delete brand not implemented')
-                }>
-                <DeleteRoundedIcon />
-
+                }
+                startIcon={<DeleteRoundedIcon />}>
                 {t('brandPage.button.deleteBrand')}
               </PrimaryButton>
             </>

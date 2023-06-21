@@ -9,6 +9,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import { styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
 
 import { useTranslation } from 'react-i18next';
 
@@ -19,7 +20,6 @@ import BasicPageWrapper from './wrappers/BasicPageWrapper';
 import PrimaryButton from '../components/PrimaryButton';
 import PrimaryModal from '../components/modal/PrimaryModal';
 import CreateIngredientForm from '../components/forms/ingredient/CreateIngredientForm';
-import InputBase from '@mui/material/InputBase';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -176,7 +176,7 @@ const IngredientElement: FC<{ ingredient: Ingredient }> = ({ ingredient }) => {
         p: '.7rem',
         color: 'white',
         m: 0,
-        // hover yellow
+
         '&:hover': {
           backgroundColor: 'palette.grey[100]',
           color: 'secondary.main',
@@ -191,12 +191,16 @@ const IngredientElement: FC<{ ingredient: Ingredient }> = ({ ingredient }) => {
         </Typography>
         <ClearIcon />
       </Box>
+
       {isHovered && (
-        <List>
-          {ingredient.functions.map((func) => (
-            <ListItem key={func}>{func}</ListItem>
-          ))}
-        </List>
+        <>
+          <Divider sx={{ mt: '1rem' }} />
+          <List>
+            {ingredient.functions.map((func) => (
+              <ListItem key={func}>{func}</ListItem>
+            ))}
+          </List>
+        </>
       )}
     </Container>
   );
